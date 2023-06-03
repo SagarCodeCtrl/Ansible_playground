@@ -1,0 +1,26 @@
+---
+- hosts: uat
+  name: Install Apache HTTP server
+  become: true
+  tasks:
+    - apt: 
+        name: 
+        - apache2
+        state: present
+        
+- hosts: prod
+  name: Install cURL
+  become: true
+  tasks:
+    - apt:
+       name:
+       - curl
+       state: present
+       
+#group all       
+- hosts: all
+  name: Create User
+  tasks:
+    - user:
+       name: sagar
+       state: present
