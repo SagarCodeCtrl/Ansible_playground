@@ -1,0 +1,11 @@
+---
+- hosts: Managed
+  become: true
+  tasks:
+    - apt: 
+        name: 
+        - apache2
+        state: present
+
+    - service: name=apache2 state=started enabled=yes
+    - raw: "echo Welcome to Apache based webapge powered by Ansible | sudo tee /var/www/html/index.html
