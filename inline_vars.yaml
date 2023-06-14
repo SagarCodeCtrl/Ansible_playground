@@ -1,0 +1,19 @@
+---
+- hosts: all
+  vars:
+    - pkg:
+      - apache2
+      - net-tools
+    - usr:
+      - kumar
+
+  tasks:
+    - name: Install applications {{pkg}}
+      apt: 
+       name: "{{pkg}}"
+       state: present
+
+    - name: Create user {{usr}}
+      user:
+       name: "{{usr}}"
+       state: present
