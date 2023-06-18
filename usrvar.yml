@@ -1,0 +1,6 @@
+#vim usrvar.yml
+usr:
+- usera
+- userb
+- userc
+- userd
