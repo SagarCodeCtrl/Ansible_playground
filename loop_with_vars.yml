@@ -1,0 +1,11 @@
+#vim usersplay.yml
+- name: create users
+  hosts: all
+  vars_files:
+  - usrvar.yml
+  tasks:
+  - name: create user
+    user:
+     name: "{{ item }}"
+     state: present
+    loop: "{{ usr }}"
