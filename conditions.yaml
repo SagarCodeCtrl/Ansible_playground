@@ -1,0 +1,13 @@
+- name: install package based on OS
+  hosts: all
+  tasks:
+  - name: install package if CentOS
+    yum:
+     name: httpd
+     state: present
+    when: ansible_distribution == 'CentOS'
+  - name: install package if Ubuntu
+    apt:
+     name: apache2
+     state: present
+    when: ansible_distribution == 'Ubuntu'
