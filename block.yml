@@ -1,0 +1,14 @@
+- name: Install Apache Server usign Block
+  hosts: all
+  tasks:
+  - name: install webserver if centos
+    block:
+    - name: install httpd
+      yum:
+       name: apache2
+       state: present
+    - name: create file
+      copy:
+       content: "Hello Block"
+       dest: /var/www/html/index.html
+    when: ansible_distribution == 'Centos'

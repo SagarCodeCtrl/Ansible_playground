@@ -1,0 +1,12 @@
+- name: Example for ignoring error
+  hosts: all
+  tasks:
+  - name: install package
+    apt:
+     name: httasdfasdfpd
+     state: present
+       #ignore_errors: yes
+  - name: create file
+    copy:
+     content: "This is myfile"
+     dest: /var/www/html/index.html

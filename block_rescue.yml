@@ -1,0 +1,23 @@
+- name: Example of Error Handling
+  hosts: all
+  tasks:
+  - name: install webserver if centos 
+    block:
+    - name: install Apache
+      apt: 
+       name: apache2
+       state: present
+    - name: restart service
+      service:
+       name: httpd
+       state: restarted
+    rescue:
+    - name: restart webserver
+      service:
+       name: apache2
+       state: restarted
+    always:
+    - name: create file
+      copy:
+       content: this is always task
+       dest: /var/www/html/index.html
