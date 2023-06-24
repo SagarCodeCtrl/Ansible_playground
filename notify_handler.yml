@@ -1,0 +1,17 @@
+- name: intsall webserver
+  hosts: all
+  tasks:
+  - name: install package
+    apt:
+     name: apache2
+     state: present
+  - name: create file
+    copy:
+     content: "Apache2 on Ubuntu"
+     dest: /var/www/html/index.html
+    notify: restart_httpd
+  handlers:
+  - name: restart_httpd
+    service:
+     name: apache2
+     state: restarted
