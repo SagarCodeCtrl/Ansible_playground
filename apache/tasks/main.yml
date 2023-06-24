@@ -1,0 +1,6 @@
+---
+# tasks file for apache
+- name: install package
+  apt:
+   name: apache2
+   state: present
